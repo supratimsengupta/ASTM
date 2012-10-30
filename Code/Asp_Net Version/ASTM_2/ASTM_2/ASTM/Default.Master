@@ -1,0 +1,93 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.master.cs" Inherits="ASTM.Masters.Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>ASTM</title>
+<link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+<link href="../style.css" rel="stylesheet" type="text/css" media="screen" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header" class="container">
+			<div id="logo">
+				<h1><a href="#"><asp:Image ID="Image1" runat="server" Height="150px" 
+                        ImageUrl="~/Images/astm.png" /> </a></h1>
+			</div>
+		<div id="menu">
+			    <table border="0" cellpadding="0" cellspacing="0" style="border-collapse:
+                     collapse;width:355pt" width="456">
+                    <colgroup>
+                        <col style="mso-width-source:userset;mso-width-alt:14848;width:305pt" 
+                            width="406" />
+                    </colgroup>
+                    <tr height="40" style="height:30.0pt">
+                        <td height="40" style="height:30.0pt;" width="426">
+                            <br />
+                            <br />
+                            <br />
+                            <strong>Institute of Advanced Security Training &amp; Management Pvt Ltd.</strong></td>
+                    </tr>
+                </table>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	
+	<div id="page">
+        <div id="sidebar">
+			<ul>
+				<li>
+					<h2>Transactions</h2>
+					<ul>
+                        <li><a href="../Center/Default.aspx">Center</a></li>
+                        <li><a href="../Batches/Default.aspx">Batch</a></li>
+                        <li><a href="../Courses/Default.aspx">Courses</a></li>
+                        <li><a href="../Enquiry/Default.aspx">Enquiry</a></li>
+                        <li><a href="../Follow%20Up/Default.aspx">Follow Up</a></li>
+                        <li><a href="../Student/StudentAdmission.aspx">Student Admission</a></li>
+					</ul>
+
+                    <h2>Reports</h2>
+					<ul>
+                        <li><a href="../Center/Default.aspx">Course Status - BatchWise</a></li>
+                        <li><a href="../Batches/Default.aspx">Course Status - CenterWise</a></li>
+                        <li><a href="../Courses/Default.aspx">Course Status - StudentWise</a></li>
+                        <li><a href="../Enquiry/Default.aspx">Enquiries - CenterWise</a></li>
+                        <li><a href="../Enquiry/Default.aspx">Enquiries - CourseWise</a></li>
+                        <li><a href="../Follow%20Up/Default.aspx">Follow Up</a></li>
+                        <li><a href="#">Student Registration</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- end #sidebar -->
+		<div id="content">
+			        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+	<!-- end #page --> 
+</div>
+<div id="footer">
+	<p>Copyright (c) 2012 ASTM.COM. All rights reserved.</p>
+</div>
+<!-- end #footer -->
+        </form>
+</body>
+</html>
