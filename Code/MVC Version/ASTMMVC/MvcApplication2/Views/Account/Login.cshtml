@@ -1,0 +1,112 @@
+﻿@model MvcApplication2.Models.AccountModel.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+     @Styles.Render("~/Content/Style.css")
+     @Styles.Render("http://fonts.googleapis.com/css?family=Oswald:400,300")
+     @Styles.Render("http://fonts.googleapis.com/css?family=Abel")
+     <title>Login</title>
+
+</head>
+<body>
+    
+   
+    <div id="wrapper">
+	<div id="header-wrapper">
+		
+		<div id="banner">
+			<div class="content">
+                <table width="100%">
+                    <tr>
+                        <td align="center">
+                               <img id="Image1" height="180px" width="200px" src="../../Images/astm.png" /> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @using (Html.BeginForm()) {
+                            @Html.ValidationSummary(true)
+    
+                                <table align="center" style="width: 50%;">
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>@Html.LabelFor(model => model.UserName)</strong></td>
+                                        <td>
+                                             @Html.EditorFor(model => model.UserName)
+                                             @Html.ValidationMessageFor(model => model.UserName)
+                                        </td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>@Html.LabelFor(model => model.Password)</strong></td>
+                                        <td>
+                                            @Html.EditorFor(model => model.Password)
+                                            @Html.ValidationMessageFor(model => model.Password)
+                                        </td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td> @Html.CheckBoxFor(m => m.RememberMe)
+                                            @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                                        </td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>&nbsp;</td>
+                                        <td>
+                                            <input type="submit" class="comments" value="Log in" />
+                                            <input type="reset" value="Cancel" class="comments" />
+                                        </td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                                
+                            </table>
+                        
+                            }        
+
+                        </td>
+                    </tr>
+                </table>
+                
+
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	
+	<div id="page">
+		<!-- end #sidebar -->
+			<div style="clear: both;">&nbsp;</div>
+		</div>
+		<!-- end #content -->
+		
+		<div style="clear: both;">&nbsp;</div>
+	</div>
+
+    <div id="footer">
+    	<p>Copyright (c) 2012 ASTM.COM. All rights reserved.</p>
+    </div>
+
+    
+    @Scripts.Render("~/bundles/jquery")
+  
+    
+</body>
+</html>
