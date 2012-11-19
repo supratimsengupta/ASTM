@@ -17,21 +17,10 @@ namespace MvcApplication2.Models
             {
             }
 
-            public DbSet<UserProfile> UserProfiles { get; set; }
+        
         }
 
-        [Table("UserProfile")]
-        public class UserProfile
-        {
-            [Key]
-            [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-            public int UserId { get; set; }
-            public string UserName { get; set; }
-            public string Password { get; set; }
-        }
-
-      
-
+        
         public class LocalPasswordModel
         {
             [Required]
@@ -83,6 +72,7 @@ namespace MvcApplication2.Models
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
         }
+
 
       
     }

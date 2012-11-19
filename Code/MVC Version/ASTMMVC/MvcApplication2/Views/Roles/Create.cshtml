@@ -1,0 +1,40 @@
+﻿@model MvcApplication2.Models.Role
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+<h3>Create Role</h3>
+<br />
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <table cellpadding="2" cellspacing="2" width="100%">
+        <tr>
+            <td class="editor-label">
+                 @Html.LabelFor(model => model.RoleName)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.RoleName)
+                @Html.ValidationMessageFor(model => model.RoleName)
+            </td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td><input type="submit" class="comments" value="Create" />&nbsp;<input  type="reset" class="comments" value="Cancel"/></td>
+        </tr>
+    </table>
+        
+        
+}
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

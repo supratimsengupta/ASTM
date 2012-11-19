@@ -11,22 +11,28 @@ namespace MvcApplication2.Controllers
 {
     public class CourseController : Controller
     {
-        private ASTMEntities db = new ASTMEntities();
+       ICourseRepository _repository;
+        public CourseController() : this(new CourseRepository()) { }
+        public CourseController(ICourseRepository repository)
+        {
+            _repository = repository;
+        }
+
 
         //
         // GET: /Course/
 
         public ActionResult Index()
         {
-            return View(db.Courses.Where(c=>(!c.ModificationType.Contains("DELETED"))).ToList());
+            return View(_repository.GetAllCourses());
         }
 
         //
         // GET: /Course/Details/5
 
-        public ActionResult Details(string id = "")
+        public ActionResult Details(int id = 0)
         {
-            Course course = db.Courses.Single(c => (c.CourseID == id && (!c.ModificationType.Contains("DELETED"))));
+            Course course = _repository.GetCourseByID(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -48,13 +54,10 @@ namespace MvcApplication2.Controllers
         [HttpPost]
         public ActionResult Create(Course course)
         {
-            course.ModificationType = "CREATED";
-            course.ModifiedBy = "U001";
-            course.ModifiedDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                db.Courses.AddObject(course);
-                db.SaveChanges();
+                CreateModificationDetails(course);
+                _repository.CreateNewCourse(course);
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +69,7 @@ namespace MvcApplication2.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Course course = db.Courses.Single(c => (c.ID == id));
+            Course course = _repository.GetCourseByID(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -78,18 +81,12 @@ namespace MvcApplication2.Controllers
         // POST: /Course/Edit/5
 
         [HttpPost]
-      
         public ActionResult Edit(Course course)
         {
-            course.ModificationType = "UPDATED";
-            course.ModifiedBy = "U001";
-            course.ModifiedDate = DateTime.Now;
-            
-           if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                db.Courses.Attach(course);
-                db.ObjectStateManager.ChangeObjectState(course, EntityState.Modified);
-                db.SaveChanges();
+                UpdateModificationDetails(course);
+                _repository.UpdateCourse(course);
                 return RedirectToAction("Index");
             }
             return View(course);
@@ -98,32 +95,44 @@ namespace MvcApplication2.Controllers
         //
         // GET: /Course/Delete/5
 
-        public ActionResult Delete(string id = "")
+        public ActionResult Delete(int id = 0)
         {
-            Course course = db.Courses.Single(c => (c.CourseID == id && (!c.ModificationType.Contains("DELETED"))));
-            if (course == null)
+            Course courses = _repository.GetCourseByID(id);
+            if (courses == null)
             {
                 return HttpNotFound();
             }
-            course.ModificationType = "DELETED";
-            return View(course);
+            return View(courses);
         }
 
         //
         // POST: /Course/Delete/5
 
         [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(string id = "")
+        public ActionResult DeleteConfirmed(int id)
         {
-            Course course = db.Courses.Single(c => (c.CourseID == id && (!c.ModificationType.Contains("DELETED"))));
-            db.Courses.DeleteObject(course);
-            db.SaveChanges();
+            _repository.DeleteCourse(id);
             return RedirectToAction("Index");
         }
+        public void UpdateModificationDetails(Course course)
+        {
+            course.ModificationType = "Updated";
+            ModificationDetails(course);
+        }
+        public void CreateModificationDetails(Course course)
+        {
+            course.ModificationType = "Created";
+            ModificationDetails(course);
+        }
+        public void ModificationDetails(Course course)
+        {
+            course.ModifiedDate = DateTime.Now;
+            course.ModifiedBy = Convert.ToString(Session["UserID"]);
 
+        }
         protected override void Dispose(bool disposing)
         {
-            db.Dispose();
+           // db.Dispose();
             base.Dispose(disposing);
         }
     }

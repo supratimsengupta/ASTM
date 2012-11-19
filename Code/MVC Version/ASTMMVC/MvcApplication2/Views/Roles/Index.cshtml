@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcApplication2.Models.Role>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3>Roles</h3>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table cellpadding="4" cellspacing="4" width="100%">
+    <tr>
+        <th align="left">
+            @Html.DisplayNameFor(model => model.RoleName)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RoleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RoleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RoleID })
+        </td>
+    </tr>
+}
+
+</table>

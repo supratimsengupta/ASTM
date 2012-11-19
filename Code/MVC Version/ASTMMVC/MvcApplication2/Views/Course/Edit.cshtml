@@ -4,19 +4,15 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h3>Edit Course</h3>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Course</legend>
+    
         @Html.HiddenFor(model => model.ID)
-        
 
         @Html.HiddenFor(model => model.CourseID)
-        
-
 
         <table>
             <tr>
@@ -55,15 +51,13 @@
                     @Html.ValidationMessageFor(model => model.Fees)
                 </td>
             </tr>
+            <tr>
+            <td></td>
+            <td><input type="submit" class="comments" value="Save" />&nbsp;<input  type="reset" class="comments" value="Cancel"/></td>
+        </tr>
         </table>
 
-
-        
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+       
 }
 
 <div>

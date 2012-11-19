@@ -4,12 +4,12 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h3>Details</h3>
 
 <fieldset>
-    <legend>Course</legend>
-    <br />
-    <table>
+    <legend style="font-weight:bold">Course</legend>
+
+    <table cellpadding="2" cellspacing="2" >
         <tr>
             <td class="display-label" style="font-weight:bold">
                 @Html.DisplayNameFor(model => model.CourseName)
@@ -43,12 +43,9 @@
             </td>
         </tr>
     </table>
-    
-   
-    <br />
-    
 </fieldset>
+<br />
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID  }) |
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

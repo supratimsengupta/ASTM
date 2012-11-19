@@ -1,29 +1,28 @@
 ﻿@model IEnumerable<MvcApplication2.Models.Course>
 
 @{
-    ViewBag.Title = "Course";
+    ViewBag.Title = "Index";
 }
 
-<h2>Course</h2>
-<br />
+<h3>Courses</h3>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table cellpadding="10" cellspacing="10" width="100%">
+<table cellpadding="4" cellspacing="4" width="100%">
     <tr>
-        <th>
+        <th align="left">
             @Html.DisplayNameFor(model => model.CourseName)
         </th>
-        <th>
+        <th align="left">
             @Html.DisplayNameFor(model => model.Description)
         </th>
-        <th>
+        <th align="left">
             @Html.DisplayNameFor(model => model.Duration)
         </th>
-        <th>
+        <th align="left">
             @Html.DisplayNameFor(model => model.Fees)
         </th>
-        
         <th></th>
     </tr>
 
@@ -41,11 +40,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Fees)
         </td>
-        
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CourseID.TrimEnd() }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.CourseID.TrimEnd() })
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ID  }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
         </td>
     </tr>
 }

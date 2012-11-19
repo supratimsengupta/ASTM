@@ -1,18 +1,15 @@
 ﻿@model MvcApplication2.Models.Course
 
 @{
-    ViewBag.Title = "Create New Course";
+    ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h3>Create Course</h3>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Course</legend>
-        <br />
-        <table>
+        <table cellpadding="2" cellspacing="2" width="100%">
         <tr>
             <td class="editor-label">
                 @Html.LabelFor(model => model.CourseName)
@@ -49,11 +46,14 @@
                 @Html.ValidationMessageFor(model => model.Fees)
             </td>
         </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" class="comments" value="Create" />&nbsp;<input  type="reset" class="comments" value="Cancel"/></td>
+        </tr>
         </table>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+       
+        
+  
 }
 
 <div>

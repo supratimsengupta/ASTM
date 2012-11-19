@@ -1,0 +1,58 @@
+﻿
+@model MvcApplication2.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h3>Create User</h3>
+<br />
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <table cellpadding="2" cellspacing="2" width="100%">
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.User.UserName)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.User.UserName)
+                @Html.ValidationMessageFor(model => model.User.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                @Html.LabelFor(model => model.User.Password)
+            </td>
+            <td class="editor-field">
+                @Html.EditorFor(model => model.User.Password)
+                @Html.ValidationMessageFor(model => model.User.Password)
+            </td>
+        </tr>
+        <tr>
+            <td class="editor-label">
+                Roles:
+            </td>
+            <td class="editor-field">
+                @Html.CheckBoxListFor(x => x.SelectedRoles,
+                      x => x.Roles, // source data
+                      x => x.RoleID,
+                      x => x.RoleName,
+                    null) 
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" class="comments" value="Create" />&nbsp;<input  type="reset" class="comments" value="Cancel"/></td>
+        </tr>
+    </table>
+        
+        
+}
+<br />
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

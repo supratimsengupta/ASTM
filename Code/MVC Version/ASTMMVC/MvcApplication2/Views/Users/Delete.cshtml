@@ -1,0 +1,39 @@
+﻿@model MvcApplication2.Models.Users
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Delete User</h3>
+
+<h4>Are you sure you want to delete this?</h4>
+<br />
+<fieldset>
+<legend style="font-weight:bold">User</legend>
+     <table cellpadding="2" cellspacing="2" >
+        <tr>
+            <td class="display-label" style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.UserName)
+            </td>
+            <td class="display-field">
+                 @Html.DisplayFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td class="display-label" style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.Password)
+            </td>
+            <td class="display-field">
+                 @Html.DisplayFor(model => model.Password)
+            </td>
+        </tr>
+   </table>
+  </fieldset>
+ <br />
+@using (Html.BeginForm())
+{
+    <p>
+        <input type="submit" value="Delete" class="comments" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

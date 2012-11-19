@@ -1,0 +1,27 @@
+﻿@model MvcApplication2.Models.Role
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h3>Details</h3>
+
+<fieldset>
+<legend style="font-weight:bold">Role</legend>
+     <table cellpadding="2" cellspacing="2" >
+        <tr>
+            <td class="display-label" style="font-weight:bold">
+                @Html.DisplayNameFor(model => model.RoleName)
+            </td>
+            <td class="display-field">
+                @Html.DisplayFor(model => model.RoleName)
+            </td>
+        </tr>
+        
+   </table>
+  </fieldset>
+  <br />
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.RoleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

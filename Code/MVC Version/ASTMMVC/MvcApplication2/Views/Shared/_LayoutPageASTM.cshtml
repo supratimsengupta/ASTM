@@ -44,6 +44,13 @@
                 <div id="sidebar">
 			        <ul>
 				        <li>
+                        <h2>Administration</h2>
+					        <ul>
+                                <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                                <li>@Html.ActionLink("Roles", "Index", "Roles")</li>
+                                
+                        
+					        </ul>
 					        <h2>Transactions</h2>
 					        <ul>
                                 <li>@Html.ActionLink("Center", "Index", "Center")</li>
@@ -52,7 +59,7 @@
                                 <li>@Html.ActionLink("Inquiry", "Index", "Inquiry")</li>
                                 <li>@Html.ActionLink("Follow Up", "Index", "Follow Up")</li>
                                 <li>@Html.ActionLink("Student Admission", "Index", "Student Admission")</li>
-                        
+                            
 					        </ul>
 
                             <h2>Reports</h2>
@@ -66,8 +73,15 @@
                                 <li>@Html.ActionLink("Student Registration", "Index", "StudentRegistration")</li>
                         
 					        </ul>
+                            @if (Session["MyMenu"] == null){
+                                Session["MyMenu"] = Html.Partial("~/Views/Shared/_Menu.cshtml");
+                            }
+                            @Session["MyMenu"]
 				        </li>
 			        </ul>
+                    
+                        
+                    
 		        </div>
 		        <!-- end #sidebar -->
 		        <div id="content">
